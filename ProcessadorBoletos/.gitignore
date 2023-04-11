@@ -16,3 +16,7 @@ out/
 
 # Ignora arquivos temporários
 *.tmp
+
+# Ignora arquivos de dependência do Maven
+target/
+pom.xml
