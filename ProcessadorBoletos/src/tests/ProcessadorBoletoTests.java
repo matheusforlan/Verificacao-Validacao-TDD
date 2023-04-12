@@ -20,4 +20,16 @@ public class ProcessadorBoletoTests {
         assertEquals(0, (fatura.getData()).compareTo(LocalDate.of(2023, 4, 12)));
         assertEquals(3000.f, fatura.getValorTotal(), 0.01);
     }
+
+    @Test
+    public void testeCriaBoletoCorretamente() {
+
+        LocalDate data = LocalDate.of(2023, 4, 12);
+        Boleto boleto = new Boleto("0001", data, 220.50f);
+
+        assertNotNull(boleto);
+        assertEquals("0001", boleto.getCodigo());
+        assertEquals(0, (boleto.getData()).compareTo(LocalDate.of(2023, 4, 12)));
+        assertEquals(220.50f, boleto.getValorPago(), 0.01);
+    }
 }
