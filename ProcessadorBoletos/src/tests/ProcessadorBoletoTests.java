@@ -6,7 +6,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import main.ProcessadorBoletos;
 import main.entities.Boleto;
 import main.entities.Fatura;
 import main.entities.Pagamento;
@@ -51,6 +54,26 @@ public class ProcessadorBoletoTests {
         assertEquals( 200.0f, pagamento.getValorPago(), 0.01);
 
         assertEquals(1, fatura.getPagamentos().size());
+    }
+
+    @Test
+    public void testeProcessaBoletosFaturaPaga() {
+        LocalDate data = LocalDate.of(2023, 4, 12);
+
+        Fatura fatura = new Fatura("Mister Vitor Pereira", data, 1500.0f);
+
+        Boleto boleto1= new Boleto("0002", data, 500.0f);
+        Boleto boleto2 = new Boleto("0002", data, 600.0f);
+        Boleto boleto3 = new Boleto("0003", data, 500.0f);
+
+        List<Boleto> boletos = new ArrayList<Boleto>();
+        boletos.add(boleto1);
+        boletos.add(boleto2);
+        boletos.add(boleto3);
+
+       ProcessadorBoletos processadorBoletos = new ProcessadorBoletos();
+       processadorBoletos.processar(fatura, boletos);
+       fatura.getStatus("PAGA");
     }
 
 }
