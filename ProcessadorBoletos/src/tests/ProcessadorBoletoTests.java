@@ -4,7 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -104,11 +106,24 @@ public class ProcessadorBoletoTests {
 
         Fatura fatura = new Fatura("Mister Vitor Pereira", data, 0f);
 
-        Boleto boleto1= new Boleto("0002", data, 500.0f);
+        Boleto boleto1 = new Boleto("0002", data, 500.0f);
 
         List<Boleto> boletos = new ArrayList<Boleto>();
         boletos.add(boleto1);
 
        assertEquals("PAGA", fatura.getStatus());
+    }
+
+    @Test
+    public void testeBoletoNegativo() {
+        LocalDate data = LocalDate.of(2023, 4, 12);
+
+        try {
+            Boleto boleto1 = new Boleto("0002", data, -100.0f);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Valor do boleto não pode ser negativo.", e.getMessage());
+        }
+
+        fail("Uma exceção é esperada.");
     }
 }
