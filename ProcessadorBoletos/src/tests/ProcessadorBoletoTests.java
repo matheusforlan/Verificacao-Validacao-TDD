@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 import main.entities.Boleto;
 import main.entities.Fatura;
+import main.entities.Pagamento;
 
 public class ProcessadorBoletoTests {
 
@@ -39,7 +40,7 @@ public class ProcessadorBoletoTests {
     public void criaPagamentoCorretamente() {
         LocalDate data = LocalDate.of(2023, 4, 12);
 
-        Pagamento pagamento = new Pagamento(BOLETO, 200.0f, data);
+        Pagamento pagamento = new Pagamento("BOLETO", 200.0f, data);
         Fatura fatura = new Fatura("Fulano de tal", data, 3000.f);
         
         fatura.getPagamentos().add(pagamento);
