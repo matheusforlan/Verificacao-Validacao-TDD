@@ -6,6 +6,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;
+
+import main.entities.Boleto;
 import main.entities.Fatura;
 
 public class ProcessadorBoletoTests {
@@ -32,4 +34,22 @@ public class ProcessadorBoletoTests {
         assertEquals(0, (boleto.getData()).compareTo(LocalDate.of(2023, 4, 12)));
         assertEquals(220.50f, boleto.getValorPago(), 0.01);
     }
+
+    @Test
+    public void criaPagamentoCorretamente() {
+        LocalDate data = LocalDate.of(2023, 4, 12);
+
+        Pagamento pagamento = new Pagamento(BOLETO, 200.0f, data);
+        Fatura fatura = new Fatura("Fulano de tal", data, 3000.f);
+        
+        fatura.getPagamentos().add(pagamento);
+
+        assertNotNull(pagamento);
+        assertEquals("BOLETO", pagamento.getTipo());
+        assertEquals(0, (pagamento.getData()).compareTo(LocalDate.of(2023, 4, 12)));
+        assertEquals( 200.0f, pagamento.getValorPago(), 0.01);
+
+        assertEquals(1, fatura.getPagamentos().size());
+    }
+
 }
