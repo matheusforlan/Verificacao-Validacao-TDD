@@ -76,4 +76,25 @@ public class ProcessadorBoletoTests {
        processadorBoletos.processar(fatura, boletos);
        assertEquals("PAGA", fatura.getStatus());
     }
+
+    @Test
+    public void testeProcessaBoletosFaturaPendente() {
+        LocalDate data = LocalDate.of(2023, 4, 12);
+
+        Fatura fatura = new Fatura("Mister Vitor Pereira", data, 1500.0f);
+
+        Boleto boleto1= new Boleto("0002", data, 500.0f);
+        Boleto boleto2 = new Boleto("0002", data, 600.0f);
+        Boleto boleto3 = new Boleto("0003", data, 300.0f);
+
+        List<Boleto> boletos = new ArrayList<Boleto>();
+        boletos.add(boleto1);
+        boletos.add(boleto2);
+        boletos.add(boleto3);
+
+       ProcessadorBoletos processadorBoletos = new ProcessadorBoletos();
+       assertEquals("PENDENTE", fatura.getStatus());
+       processadorBoletos.processar(fatura, boletos);
+       assertEquals("PENDENTE", fatura.getStatus());
+    }
 }
