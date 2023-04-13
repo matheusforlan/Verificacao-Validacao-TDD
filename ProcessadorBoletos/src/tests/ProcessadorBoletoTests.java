@@ -120,10 +120,9 @@ public class ProcessadorBoletoTests {
 
         try {
             Boleto boleto1 = new Boleto("0002", data, -100.0f);
+            fail("Uma exceção era esperada.");
         } catch (IllegalArgumentException e) {
             assertEquals("Valor do boleto não pode ser negativo.", e.getMessage());
         }
-
-        fail("Uma exceção é esperada.");
     }
 }

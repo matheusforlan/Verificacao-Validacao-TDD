@@ -11,10 +11,15 @@ public class Boleto {
     public Boleto() {
     }
 
-    public Boleto(String codigo, LocalDate data, Float valorPago) {
+    public Boleto(String codigo, LocalDate data, Float valorPago) throws IllegalArgumentException {
         this.codigo = codigo;
         this.data = data;
-        this.valorPago = valorPago;
+        if (valorPago < 0) {
+            throw new IllegalArgumentException("Valor do boleto não pode ser negativo.");
+        } else {
+            this.valorPago = valorPago;
+        }
+
     }
 
     public String getCodigo() {
