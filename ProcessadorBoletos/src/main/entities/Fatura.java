@@ -17,6 +17,11 @@ public class Fatura {
         this.data = data;
         this.valorTotal = valorTotal;
         this.pagamentos = new ArrayList<Pagamento>();
+        if (this.isPaga()) {
+            this.status = "PAGA";
+        } else {
+            this.status = "PENDENTE";
+        }
     }
 
     public Fatura() {
