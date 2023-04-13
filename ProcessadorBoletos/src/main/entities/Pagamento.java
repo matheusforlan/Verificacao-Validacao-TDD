@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 public class Pagamento {
 
-    // BOLETO, 200.0f, data
-
     private String tipo;
     private Float valorPago;
     private LocalDate data;
