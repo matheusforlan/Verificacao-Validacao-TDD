@@ -1,5 +1,6 @@
 package tests;
 
+import main.Testador;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
