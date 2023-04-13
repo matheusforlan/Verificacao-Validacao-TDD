@@ -8,4 +8,9 @@ public class Desenvolvedor implements Cargo {
             return salarioBase * 0.9;
         }
     }
+
+    @Override
+    public String getCargo() {
+        return "Desenvolvedor" ;
+    }
 }

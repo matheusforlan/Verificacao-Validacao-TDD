@@ -8,4 +8,9 @@ public class DBA implements Cargo {
             return salarioBase * 0.85;
         }
     }
+
+    @Override
+    public String getCargo() {
+        return "DBA";
+    }
 }

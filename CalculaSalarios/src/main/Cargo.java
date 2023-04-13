@@ -4,4 +4,5 @@ public interface Cargo {
 
     public double calcularSalarioLiquido(double salarioBase);
 
+    String getCargo();
 }
