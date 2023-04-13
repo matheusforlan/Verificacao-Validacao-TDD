@@ -97,4 +97,18 @@ public class ProcessadorBoletoTests {
        processadorBoletos.processar(fatura, boletos);
        assertEquals("PENDENTE", fatura.getStatus());
     }
+
+    @Test
+    public void testeFaturaZeradaMarcadaComoPaga() {
+        LocalDate data = LocalDate.of(2023, 4, 12);
+
+        Fatura fatura = new Fatura("Mister Vitor Pereira", data, 0f);
+
+        Boleto boleto1= new Boleto("0002", data, 500.0f);
+
+        List<Boleto> boletos = new ArrayList<Boleto>();
+        boletos.add(boleto1);
+
+       assertEquals("PAGA", fatura.getStatus());
+    }
 }
