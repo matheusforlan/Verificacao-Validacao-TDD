@@ -1,4 +1,5 @@
 package tests;
+import main.Funcionario;
 import org.junit.Test;
 import static org.junit.Assert.*;
 public class FuncionarioTest {
@@ -9,7 +10,7 @@ public class FuncionarioTest {
 
         assertEquals("Forlán", funcionario.getNome());
         assertEquals("4lan@gmail.com", funcionario.getEmail());
-        assertEquals(3000, funcionario.getSalarioBase());
+        assertEquals(3000, funcionario.getSalarioBase(), 0.001);
 
     }
 
