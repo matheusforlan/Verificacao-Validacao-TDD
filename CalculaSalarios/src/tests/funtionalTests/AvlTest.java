@@ -10,7 +10,7 @@ import main.Desenvolvedor;
 import main.Gerente;
 import main.Testador;
 
-public class AvlTests {
+public class AvlTest {
 
     @Test
     public void casoTeste1() {
